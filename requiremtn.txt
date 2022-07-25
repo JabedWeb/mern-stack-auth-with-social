@@ -1,4 +1,0 @@
-#npm init -y 
-//create a boilar plate
-//npx create-react-app app-name
-
