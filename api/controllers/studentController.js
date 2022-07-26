@@ -61,7 +61,7 @@ export const updateStudent = async(req,res)=>{
 
     const {id}=req.params;
     try{
-        const student=await Student.findByIdAndUpdate(id,req.body);
+        const student=await Student.findByIdAndUpdate(id,req.body,{new : true});
         res.status(200).json(student)
        }
        catch(error){
