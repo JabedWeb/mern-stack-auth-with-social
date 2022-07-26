@@ -1,11 +1,22 @@
+
+import Student from "../models/Student.js"
+
 /**
  * @public
  * @route /api/student
  * @method GET
  */
 
-export const getAllStudents =(req,res)=>{
-    res.send('I am from all students')
+
+
+export const getAllStudents = async(req,res)=>{
+   try{
+    const students=await Student.find();
+    res.status(200).json(students)
+   }
+   catch(error){
+    console.log(error);
+   }
 }
 /**
  * @public
@@ -13,8 +24,15 @@ export const getAllStudents =(req,res)=>{
  * @method POST
  */
 
-export const getSingleStudent =(req,res)=>{
-    res.send('I am from single students')
+export const getSingleStudent =async (req,res)=>{
+    const {id}=req.params;
+    try{
+        const student=await Student.findById(id);
+        res.status(200).json(student)
+       }
+       catch(error){
+        console.log(error);
+       }
 }
 /**
  * @public
@@ -22,8 +40,15 @@ export const getSingleStudent =(req,res)=>{
  * @method POST
  */
 
- export const createStudent =(req,res)=>{
-    res.send('I am from create students')
+ export const createStudent = async(req,res)=>{
+
+    try{
+        const student=await Student.create(req.body);
+        res.status(200).json(student)
+       }
+       catch(error){
+        console.log(error);
+       }
 }
 
 /**
@@ -32,8 +57,16 @@ export const getSingleStudent =(req,res)=>{
  * @method PUT/PATCH
  */
 
-export const updateStudent =(req,res)=>{
-    res.send('I am from update students')
+export const updateStudent = async(req,res)=>{
+
+    const {id}=req.params;
+    try{
+        const student=await Student.findByIdAndUpdate(id,req.body);
+        res.status(200).json(student)
+       }
+       catch(error){
+        console.log(error);
+       }
 }
 /**
  * @public
@@ -41,7 +74,14 @@ export const updateStudent =(req,res)=>{
  * @method DELETE
  */
 
-export const deleteStudent =(req,res)=>{
-    res.send('I am from delete students')
+export const deleteStudent =async(req,res)=>{
+    const {id}=req.params;
+    try{
+        const student=await Student.findByIdAndDelete(id);
+        res.status(200).json(student)
+       }
+       catch(error){
+        console.log(error);
+       }
 }
 
