@@ -1,11 +1,8 @@
 import express from 'express';
 import colors from 'colors';
 import dotenv from 'dotenv';
-
 import studentRoute from './routes/student.js';
-
-
-
+import mongoDBConnect from './config/db.js';
 
 //init express
 const app =express();
@@ -23,5 +20,6 @@ app.use('/api/student',studentRoute)
 
 //listen server
 app.listen(PORT,()=>{
+    mongoDBConnect();
     console.log(`server running on port ${PORT}`.bgGreen.black);
 })

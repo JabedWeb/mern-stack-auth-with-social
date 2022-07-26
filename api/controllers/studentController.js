@@ -42,6 +42,6 @@ export const updateStudent =(req,res)=>{
  */
 
 export const deleteStudent =(req,res)=>{
-    res.send('I am from all students')
+    res.send('I am from delete students')
 }
 

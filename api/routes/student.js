@@ -8,6 +8,6 @@ const router =express.Router();
 //route
 
 router.route('/').get(getAllStudents).post(createStudent);
-router.route('/').get(getSingleStudent).delete(deleteStudent).put(updateStudent).patch(updateStudent)
+router.route('/:id').get(getSingleStudent).delete(deleteStudent).put(updateStudent).patch(updateStudent)
 //export default router
 export default router;
